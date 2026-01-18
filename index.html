@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Adventure Arena – Trampoline Park, Arcade Games, Fun Zone & Family Entertainment. Book your adventure today!" />
+  <meta name="keywords" content="Adventure Arena, Fun Zone, Trampoline Park, Arcade Games, Family Entertainment, Kids Play Area, Adventure Park India" />
+  <meta name="author" content="Viranya Fun&Adventure" />
+  <title>Adventure Arena | Fun Zone & Trampoline Park</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --primary:#ff4d4d;
+      --secondary:#1e1e2f;
+      --light:#f4f6f9;
+      --dark:#121212;
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+
+    body{background:var(--light);color:#333;line-height:1.6;transition:0.3s;}
+    body.dark{background:var(--dark);color:#eee;}
+
+    /* NAVBAR */
+    header{position:sticky;top:0;z-index:1000;background:white;box-shadow:0 4px 12px rgba(0,0,0,0.1);}    
+    body.dark header{background:#1e1e2f;}
+
+    nav{max-width:1200px;margin:auto;display:flex;justify-content:space-between;align-items:center;padding:15px 20px;}
+    nav h1{color:var(--primary);}
+
+    .nav-links{display:flex;list-style:none;gap:20px;}
+    .nav-links a{text-decoration:none;color:inherit;font-weight:500;}
+    .nav-links a:hover{color:var(--primary);}
+
+    .menu{display:none;font-size:26px;cursor:pointer;}
+
+    .toggle{border:none;background:var(--primary);color:white;padding:8px 14px;border-radius:20px;cursor:pointer;}
+
+    /* HERO SLIDER */
+    .hero{min-height:90vh;display:flex;align-items:center;justify-content:center;text-align:center;color:white;position:relative;overflow:hidden;}
+    .slide{position:absolute;inset:0;background-size:cover;background-position:center;animation:slide 15s infinite;}
+    .slide:nth-child(1){background-image:url('https://images.unsplash.com/photo-1546443046-ed1ce6ffd1a9');}
+    .slide:nth-child(2){background-image:url('https://images.unsplash.com/photo-1599058917212-d750089bc07c');animation-delay:5s;}
+    .slide:nth-child(3){background-image:url('https://images.unsplash.com/photo-1606813909023-bbbd1efbc6ae');animation-delay:10s;}
+
+    @keyframes slide{
+      0%,33%{opacity:1}
+      34%,100%{opacity:0}
+    }
+
+    .hero-content{position:relative;z-index:2;padding:20px;background:rgba(0,0,0,0.5);border-radius:20px;}
+
+    .hero h2{font-size:3rem;margin-bottom:15px;}
+
+    .btn{display:inline-block;padding:12px 30px;background:var(--primary);color:white;border-radius:30px;text-decoration:none;font-weight:600;transition:0.3s;}
+    .btn:hover{transform:scale(1.05);}
+
+    section{max-width:1200px;margin:auto;padding:70px 20px;}
+    section h2{text-align:center;margin-bottom:40px;font-size:2.2rem;color:var(--primary);}
+
+    /* CARDS */
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;}
+    .card{background:white;border-radius:20px;box-shadow:0 10px 25px rgba(0,0,0,0.1);overflow:hidden;transition:0.3s;opacity:0;transform:translateY(40px);}    
+    body.dark .card{background:#1e1e2f;}
+    .card.show{opacity:1;transform:translateY(0);}    
+    .card img{width:100%;height:200px;object-fit:cover;}
+    .card div{padding:20px;}
+
+    /* BOOKING */
+    .booking{
+      background:linear-gradient(135deg,var(--primary),#ff7b7b);
+      color:white;
+      border-radius:25px;
+      padding:50px 30px;
+      text-align:center;
+      position: relative;
+    }
+    .booking h2 {
+      margin-bottom: 40px;
+      font-weight: 700;
+      letter-spacing: 1.1px;
+      color: yellow;
+      position: relative;
+      z-index: 2;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+    }
+    .booking form{
+      max-width:500px;
+      margin:auto;
+      display:grid;
+      gap:15px;
+    }
+    .booking input, .booking select {
+      padding:12px 15px;
+      border:none;
+      border-radius:10px;
+      outline:none;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+    .booking button.btn{
+      padding: 15px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .booking button.btn:hover {
+      transform: scale(1.05);
+      background-color: #cc3b3b;
+    }
+    /* Message below form */
+    #bookingMessage {
+      margin-top: 15px;
+      font-weight: 600;
+      min-height: 22px;
+    }
+
+    /* WHATSAPP */
+    .whatsapp{position:fixed;bottom:20px;right:20px;background:#25d366;color:white;padding:15px 18px;border-radius:50%;font-size:22px;text-decoration:none;box-shadow:0 8px 20px rgba(0,0,0,0.3);}    
+
+    footer{background:#111;color:#aaa;text-align:center;padding:20px;}
+    footer span{color:var(--primary);}
+
+    /* MOBILE */
+    @media(max-width:768px){
+      .nav-links{display:none;position:absolute;top:70px;right:20px;background:white;flex-direction:column;padding:20px;border-radius:15px;box-shadow:0 10px 25px rgba(0,0,0,0.2);}      
+      body.dark .nav-links{background:#1e1e2f;}
+      .nav-links.show{display:flex;}
+      .menu{display:block;}
+      .hero h2{font-size:2.2rem;}
+    }
+    .hero-subtitle {
+      padding: 10px 20px 30px;
+      color: yellow;
+    }
+    body {
+      background-image: url("Images/Adventure.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+
+      color: #333;
+      line-height: 1.6;
+    }
+    section {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      margin-bottom: 40px;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.35);
+      z-index: -1;
+    }
+    @media (max-width: 768px) {
+      body {
+          background-attachment: scroll;
+      }
+    }
+  </style>
+
+  <!-- PWA META -->
+  <meta name="theme-color" content="#ff4d4d" />
+  <link rel="apple-touch-icon" href="https://via.placeholder.com/192" />
+  <link rel="manifest" href='data:application/manifest+json,{"name":"Adventure Arena","short_name":"Adventure Arena","start_url":".","display":"standalone","background_color":"#ffffff","theme_color":"#ff4d4d","icons":[{"src":"https://via.placeholder.com/192","sizes":"192x192","type":"image/png"},{"src":"https://via.placeholder.com/512","sizes":"512x512","type":"image/png"}]}' />
+
+  <!-- Google Analytics (replace G-XXXXXXX) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);} 
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXX');
+  </script>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader" style="position:fixed;inset:0;background:#111;display:flex;align-items:center;justify-content:center;z-index:9999;color:white;font-size:24px;">Loading Fun...</div>
+
+<header>
+  <nav>
+    <h1>Adventure Arena</h1>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#">Home</a></li>
+      <li><a href="#activities">Activities</a></li>
+      <li><a href="#book">Book</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="menu" onclick="toggleMenu()">☰</div>
+    <button class="toggle" onclick="toggleTheme()">🌙</button>
+  </nav>
+</header>
+
+<div class="hero">
+  <div class="slide"></div>
+  <div class="slide"></div>
+  <div class="slide"></div>
+  <div class="hero-content">
+    <h2>Where Fun Meets Adventure</h2>
+    <p class="hero-subtitle">
+      Trampoline, Arcade Games & unforgettable experiences
+    </p>
+    <a href="#book" class="btn">Book Now</a>
+  </div>
+</div>
+
+<section id="activities">
+  <h2>Our Activities</h2>
+  <div class="cards">
+    <div class="card"><img src="Images/tramploline.jpg"><div><h3>Trampoline Park</h3><p>Jump, laugh and enjoy safely.</p></div></div>
+    <div class="card"><img src="Images/arcadegames.jpg"><div><h3>Arcade Games</h3><p>Fun for kids & adults.</p></div></div>
+    <div class="card"><img src="Images/funzonejpg.jpeg"><div><h3>Fun Zone</h3><p>Perfect for families & parties.</p></div></div>
+  </div>
+</section>
+
+<section id="book">
+  <div class="booking">
+    <h2>Book Your Adventure</h2>
+    <form id="bookingForm">
+      <input type="text" name="user_name" placeholder="Your Name" required>
+      <input type="email" name="user_email" placeholder="Email" required>
+      <input type="tel" name="user_phone" placeholder="Phone Number" pattern="[0-9]{10}" required title="Enter 10 digit phone number">
+      <input type="date" name="booking_date" required>
+      <select name="time_slot" required>
+        <option value="" disabled selected>Choose Time Slot</option>
+        <option value="10:00 AM - 12:00 PM">10:00 AM - 12:00 PM</option>
+        <option value="12:00 PM - 2:00 PM">12:00 PM - 2:00 PM</option>
+        <option value="2:00 PM - 4:00 PM">2:00 PM - 4:00 PM</option>
+        <option value="4:00 PM - 6:00 PM">4:00 PM - 6:00 PM</option>
+      </select>
+      <button class="btn" type="submit">Submit</button>
+      <div id="bookingMessage"></div>
+    </form>
+  </div>
+</section>
+
+<section>
+  <h2>Gallery</h2>
+  <div class="cards">
+    <div class="card"><img src="Images/gallery1.png"></div>
+    <div class="card"><img src="Images/gallery2.webp"></div>
+    <div class="card"><img src="Images/gallery3.jpg"></div>
+  </div>
+</section>
+
+<section>
+  <h2>Pricing</h2>
+  <div class="cards">
+    <div class="card"><div><h3>Basic Pass</h3><p>₹299 / hour</p><p>Arcade + Fun Zone</p></div></div>
+    <div class="card"><div><h3>Adventure Pass</h3><p>₹599 / hour</p><p>All Activities</p></div></div>
+    <div class="card"><div><h3>Family Pack</h3><p>₹999</p><p>Up to 4 people</p></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>What People Say</h2>
+  <div class="cards">
+    <div class="card"><div><p>"Amazing place! Kids loved it."</p><strong>- Aanya</strong></div></div>
+    <div class="card"><div><p>"Best fun zone in the city."</p><strong>- Manya</strong></div></div>
+    <div class="card"><div><p>"Clean, safe & super fun."</p><strong>- Yash</strong></div></div>
+    <div class="card"><div><p>"Chilling and Adventures Place I ever Visited"</p><strong>- Aditya</strong></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Find Us</h2>
+  <iframe src="https://maps.google.com/maps?q=fun%20zone&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="350" style="border:0;border-radius:20px"></iframe>
+</section>
+
+<a 
+  href="https://wa.me/916264449774?text=Hi%20Adventure%20Arena!%20%F0%9F%91%8B%0A%0AI'd%20like%20to%20book%20an%20adventure.%0A%0A%F0%9F%93%8B%20Pricing%20Options%3A%0A-%20Basic%20Pass%3A%20%E2%82%B9299%20%2F%20hour%20(Arcade%20%2B%20Fun%20Zone)%0A-%20Adventure%20Pass%3A%20%E2%82%B9599%20%2F%20hour%20(All%20Activities)%0A-%20Family%20Pack%3A%20%E2%82%B9999%20(up%20to%204%20people)%0A%0APlease%20tell%20me%20which%20pass%20you%20recommend%20and%20available%20slots.%0A%0AThank%20you%20%F0%9F%98%8A" 
+  class="whatsapp"
+  target="_blank"
+  rel="noopener noreferrer"
+  title="Chat with us on WhatsApp"
+>
+  💬
+</a>
+
+<footer id="contact">
+  <p>© 2026 <span>Viranya Fun&Adventure</span>. All Rights Reserved.</p>
+</footer>
+
+<!-- EmailJS SDK -->
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+  (function(){
+    emailjs.init("z2BxTYzH5744u1uza"); // Replace with your EmailJS user ID
+  })();
+
+  function toggleTheme(){document.body.classList.toggle('dark');}
+  function toggleMenu(){document.getElementById('navLinks').classList.toggle('show');}
+
+  // Scroll animation
+  const cards=document.querySelectorAll('.card');
+  window.addEventListener('scroll',()=>{
+    cards.forEach(card=>{
+      const pos=card.getBoundingClientRect().top;
+      if(pos<window.innerHeight-100){card.classList.add('show');}
+    });
+  });
+
+  window.onload=()=>{document.getElementById('loader').style.display='none';}
+
+  // EmailJS form submission
+  document.getElementById('bookingForm')?.addEventListener('submit', function(e){
+    e.preventDefault();
+
+    const bookingMessage = document.getElementById('bookingMessage');
+    bookingMessage.style.color = '';
+    bookingMessage.textContent = 'Sending your booking request...';
+
+    emailjs.sendForm('service_awsazir', 'template_mn09dbi', this)
+      .then(() => {
+        bookingMessage.style.color = '#dff0d8'; // green
+        bookingMessage.textContent = '🎉 Booking request sent! We will contact you shortly.';
+        this.reset();
+      }, (error) => {
+        bookingMessage.style.color = '#f8d7da'; // red
+        bookingMessage.textContent = '❌ Oops! Something went wrong. Please try again later.';
+        console.error('EmailJS error:', error);
+      });
+  });
+</script>
+
+</body>
+</html>
+
